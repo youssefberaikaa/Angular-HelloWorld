@@ -11,6 +11,14 @@ pipeline {
                 sh 'npm install'
             }
         }
+        stage('Run Unit Tests') {
+            steps {
+                script {
+                    // Use the Angular CLI to run tests in headless mode
+                    sh 'ng test --browsers=ChromeHeadless --watch=false --code-coverage'
+                }
+            }
+        }
 
         stage('build angular') {
             steps {
