@@ -40,7 +40,7 @@ pipeline {
         //stage('Archive Dist') {
            // steps {
               //  script {
-                    sh 'tar -czvf dist.tar.gz -C dist/ .'
+                    //sh 'tar -czvf dist.tar.gz -C dist/ .'
                 //}
             //}
         //}
