@@ -3,7 +3,7 @@ pipeline {
     tools {
         nodejs "my-nodejs"
     }
-    }
+    
     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
