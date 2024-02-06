@@ -51,7 +51,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'nexus-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                     sh """
                     find dist/ -type f | while read file; do
-                     curl -u $USER:$PASS --upload-file "\$file" http://192.168.1.3:8081/repository/angular-artifacts/\${file#dist/"
+                     curl -u $USER:$PASS --upload-file "\$file" http://192.168.1.3:8081/repository/angular-artifacts/\${file#dist/}"
                      done
                      """
                 }
