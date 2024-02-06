@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     // Use the Angular CLI to run tests in headless mode
-                    sh 'export CHROME_BIN=/usr/bin/google-chrome && ng test'
+                    //sh 'export CHROME_BIN=/usr/bin/google-chrome && ng test'
                 }
             }
         }
@@ -48,7 +48,7 @@ pipeline {
                 script {
                     // Assuming 'dist/' is your build directory
                     withCredentials([usernamePassword(credentialsId: 'nexus-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-                    sh "curl -u $USER:$PASS --upload-file dist.tar.gz http://192.168.1.3/repository/angular-artifacts/dist.tar.gz"
+                    sh "curl -u $USER:$PASS --upload-file dist.tar.gz http://192.168.1.3:8081/repository/angular-artifacts/dist.tar.gz"
                 }
                 }
             }
