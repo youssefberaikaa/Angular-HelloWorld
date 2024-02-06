@@ -37,19 +37,23 @@ pipeline {
 
             }
         }
-        stage('Archive Dist') {
-            steps {
-                script {
+        //stage('Archive Dist') {
+           // steps {
+              //  script {
                     sh 'tar -czvf dist.tar.gz -C dist/ .'
-                }
-            }
-        }
+                //}
+            //}
+        //}
         stage('Upload Artifact to Nexus') {
             steps {
                 script {
                     // Assuming 'dist/' is your build directory
                     withCredentials([usernamePassword(credentialsId: 'nexus-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-                    sh "curl -u $USER:$PASS --upload-file dist.tar.gz http://192.168.1.3:8081/repository/angular-artifacts/dist.tar.gz"
+                    sh """
+                    find dist/ -type f | while read file; do
+                     curl -u $USER:$PASS --upload-file "\$file" http://192.168.1.3:8081/repository/angular-artifacts/\${file#dist/"
+                     done
+                     """
                 }
                 }
             }
