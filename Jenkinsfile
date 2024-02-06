@@ -4,7 +4,7 @@ pipeline {
         nodejs "my-nodejs"
     }
     stages {
-// testing webhooks again and again
+// installing dependencies for the application
         stage('Install Dependencies') {
             steps {
                 // Use Node.js and npm installed on the Jenkins agent
