@@ -49,11 +49,11 @@ pipeline {
                 script {
                     // Assuming 'dist/' is your build directory
                     withCredentials([usernamePassword(credentialsId: 'nexus-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-                    sh """
+                    sh '''
                     find dist/ -type f | while read file; do
-                     curl -u $USER:$PASS --upload-file "\$file" http://192.168.1.3:8081/repository/angular-artifacts/\${file#dist/}"
+                     curl -u $USER:$PASS --upload-file "$file" http://192.168.1.3:8081/repository/angular-artifacts/${file#dist/}"
                      done
-                     """
+                     '''
                 }
                 }
             }
