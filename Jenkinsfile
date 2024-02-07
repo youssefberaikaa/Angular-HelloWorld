@@ -75,7 +75,9 @@ pipeline {
             }
         }
 
-        post {
+        
+        }
+post {
     failure {
         emailext (
             to: 'youssef.beraikaa@gmail.com',
@@ -84,5 +86,5 @@ pipeline {
         )
     }
 }
-        }
+
     }
