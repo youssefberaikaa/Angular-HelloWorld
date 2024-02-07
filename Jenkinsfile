@@ -75,11 +75,14 @@ pipeline {
             }
         }
 
-        stage('deploy') {
-            steps {
-                // Build the Angular app
-                echo 'deploying the application ...'
-                }
-            }
+        post {
+    failure {
+        emailext (
+            to: 'youssef.beraikaa@gmail.com',
+            subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+            body: "Check console output at ${env.BUILD_URL} to view the details."
+        )
+    }
+}
         }
     }
