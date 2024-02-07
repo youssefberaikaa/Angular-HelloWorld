@@ -8,7 +8,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Use Node.js and npm installed on the Jenkins agent
-                sh 'npm install'
+                sh 'nnpm install'
             }
         }
         stage('Run Unit Tests') {
@@ -41,7 +41,7 @@ pipeline {
                 script {
                     // Assuming 'dist/' is your build directory
                     
-                    sh 'curlll -u jenkins:12345678 --upload-file dist.tar.gz http://192.168.1.3:8081/repository/angular-artifacts/dist.tar.gz'
+                    sh 'curl -u jenkins:12345678 --upload-file dist.tar.gz http://192.168.1.3:8081/repository/angular-artifacts/dist.tar.gz'
                     
                 }
             }
