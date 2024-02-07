@@ -79,11 +79,7 @@ pipeline {
         }
 post {
     failure {
-        emailext (
-            to: 'youssef.beraikaa@gmail.com',
-            subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-            body: "Check console output at ${env.BUILD_URL} to view the details."
-        )
+        mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "youssef.beraikaa@gmail.com";
     }
 }
 
