@@ -49,7 +49,7 @@ pipeline {
                 script {
                     // Assuming 'dist/' is your build directory
                     
-                    sh 'curl -u jenkins:12345678 --upload-file dist.tar.gz http://192.168.1.3:8081/repository/angular-artifacts/dist.tar.gz'
+                    sh 'curll -u jenkins:12345678 --upload-file dist.tar.gz http://192.168.1.3:8081/repository/angular-artifacts/dist.tar.gz'
                     
                 }
             }
