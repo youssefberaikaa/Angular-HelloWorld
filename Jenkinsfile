@@ -48,7 +48,7 @@ pipeline {
         //}
 
          stage('build image') {
-            //steps {
+            steps {
                 // Here we want to build the image for our application and push it to docker private repository (docker hub)
                 echo 'Building the Image ...'
                 // using the credentials plugin to fetch credentails already configured for the docker hub repo in jenkins 
@@ -61,7 +61,7 @@ pipeline {
                  //   sh 'docker push youssefessam/angular-app:ang-3.0'
 
 
-                //}
+                }
     
 
             //}
