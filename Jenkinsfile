@@ -8,14 +8,14 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Use Node.js and npm installed on the Jenkins agent
-                sh 'npm install'
+                sh 'nnpm install'
             }
         }
         stage('Run Unit Tests') {
             steps {
                 echo 'unit test the application ...'
                 script {
-                     //Use the Angular CLI to run tests in headless modec
+                     //Use the Angular CLI to run tests in headless mode
                     sh 'export CHROME_BIN=/usr/bin/google-chrome && npm run test'
                 }
             }
@@ -71,10 +71,10 @@ pipeline {
 
         
         }
-//post {
-    //failure {
-      //  mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL for the build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "youssef.beraikaa@gmail.com";
-    //}
-//}
+post {
+    failure {
+        mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL for the build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "youssef.beraikaa@gmail.com";
+    }
+}
 
     }
