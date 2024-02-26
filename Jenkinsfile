@@ -23,7 +23,7 @@ pipeline {
 
         stage('build angular') {
             steps {
-                 building the application 
+                 //building the application 
                 echo 'Building the application ...'
                 sh 'npm run build'
 
