@@ -29,23 +29,23 @@ pipeline {
 
             }
         }
-        //s/tage('Archive Dist') {
-          // steps {
-            //    script {
-              //      sh 'tar -czvf dist.tar.gz -C dist/ .'
-                //}
-            //}
-        //}
-        //stage('Upload Artifact to Nexus') {
-          //  steps {
-            //    script {
-                    // Assuming 'dist/' is your build directory
+        stage('Archive Dist') {
+           steps {
+                script {
+                    sh 'tar -czvf dist.tar.gz -C dist/ .'
+                }
+            }
+        }
+        stage('Upload Artifact to Nexus') {
+            steps {
+                script {
+                     //Assuming 'dist/' is your build directory
                     
-              //      sh 'curl -u jenkins:12345678 --upload-file dist.tar.gz http://192.168.1.3:8081/repository/angular-artifacts/dist.tar.gz'
+                    sh 'curl -u jenkins:12345678 --upload-file dist.tar.gz http://192.168.0.128:8081/repository/my-project-repo/dist.tar.gz'
                     
-                //}
-            //}
-        //}
+                }
+            }
+        }
 
          stage('build image') {
             steps {
