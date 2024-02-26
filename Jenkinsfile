@@ -32,7 +32,8 @@ pipeline {
         stage('Archive Dist') {
            steps {
                 script {
-                    sh 'tar -czvf dist.tar.gz -C dist/ .'
+                  // Generate a timestamp or use Jenkins environment variables
+                    sh "tar -czvf dist-${BUILD_NUMBER}.tar.gz -C dist/ ."
                 }
             }
         }
@@ -41,7 +42,7 @@ pipeline {
                 script {
                      //Assuming 'dist/' is your build directory
                     
-                    sh 'curl -u jenkins:12345678 --upload-file dist.tar.gz http://192.168.0.128:8081/repository/my-project-repo/dist.tar.gz'
+                    sh "curl -u jenkins:12345678 --upload-file dist-${BUILD_NUMBER}.tar.gz http://192.168.0.128:8081/repository/artifact-repo/dist-${BUILD_NUMBER}.tar.gz"
                     
                 }
             }
