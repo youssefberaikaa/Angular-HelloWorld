@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo 'unit test the application ...'
                 script {
-                     Use the Angular CLI to run tests in headless mode
+                     //Use the Angular CLI to run tests in headless mode
                     sh 'export CHROME_BIN=/usr/bin/google-chrome && ng test'
                 }
             }
