@@ -54,11 +54,11 @@ pipeline {
                 echo 'Building the Image ...'
 
                  //using the credentials plugin to fetch credentails already configured for the docker hub repo in jenkins 
-                 withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+                 //withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]){
                     //building the image 
-                    sh "docker build -t youssefessam/angular-app:ang-${BUILD_NUMBER} ."
+                    //sh "docker build -t youssefessam/angular-app:ang-${BUILD_NUMBER} ."
                      //login to dockerhub
-                    sh "echo $PASS | docker login -u $USER --password-stdin"
+                    //sh "echo $PASS | docker login -u $USER --password-stdin"
                     //push to the dockerhub repository
                     //sh 'docker push youssefessam/angular-app:ang-3.0'
 
