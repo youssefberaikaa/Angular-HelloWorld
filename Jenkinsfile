@@ -8,7 +8,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Use Node.js and npm installed on the Jenkins agent
-                sh 'nnpm install'
+                sh 'npm install'
             }
         }
         stage('Run Unit Tests') {
@@ -53,20 +53,20 @@ pipeline {
                 // Here we want to build the image for our application and push it to docker private repository (docker hub)
                 echo 'Building the Image ...'
 
-                // using the credentials plugin to fetch credentails already configured for the docker hub repo in jenkins 
-           //     withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+                 //using the credentials plugin to fetch credentails already configured for the docker hub repo in jenkins 
+                 withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]){
                     //building the image 
-             //       sh 'docker build -t youssefessam/angular-app:ang-3.0 .'
+                    sh "docker build -t youssefessam/angular-app:ang-${BUILD_NUMBER} ."
                      //login to dockerhub
-               //     sh "echo $PASS | docker login -u $USER --password-stdin"
+                    sh "echo $PASS | docker login -u $USER --password-stdin"
                     //push to the dockerhub repository
-                 //   sh 'docker push youssefessam/angular-app:ang-3.0'
+                    //sh 'docker push youssefessam/angular-app:ang-3.0'
 
 
                 }
     
 
-            //}
+            }
         }
 
         
