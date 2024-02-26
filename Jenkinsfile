@@ -21,14 +21,14 @@ pipeline {
             //}
         //}
 
-        //stage('build angular') {
-          //  steps {
-                // building the application 
-            //    echo 'Building the application ...'
-              //  sh 'npm run build'
+        stage('build angular') {
+            steps {
+                 building the application 
+                echo 'Building the application ...'
+                sh 'npm run build'
 
-            //}
-        //}
+            }
+        }
         //s/tage('Archive Dist') {
           // steps {
             //    script {
